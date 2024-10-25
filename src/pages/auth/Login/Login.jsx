@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <div className="login-form-main-container">
       <div className="login-form-container">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="form-heading-container">
             <h1>Sign in</h1>
           </div>
@@ -74,7 +74,7 @@ const Login = () => {
               Remember me
             </label>
           </div>
-          <Button className={'full-width'} type="submit" disabled={loading}>
+          <Button className={'full-width'} type="submit" disabled={loading} onClick={handleSubmit}>
             Login
           </Button>
         </form>

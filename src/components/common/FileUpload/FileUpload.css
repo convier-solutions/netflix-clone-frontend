@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   border-radius: 4px;
-  padding: 1.5rem;
   cursor: pointer;
   box-sizing: border-box;
   transition: background-color 0.3s;
@@ -55,6 +54,6 @@
 }
 
 .uploaded-image {
-  height: 100%;
-  width: 100%;
+  width: 476px;
+  height: 504px;
 }

@@ -29,12 +29,12 @@ const AddMovie = () => {
     e.preventDefault();
     const validationErrors = validateMovie(title, year);
     if (Object.keys(validationErrors).length === 0) {
-      const payload = {
-        picture: image,
-        title: title,
-        publishing_year: year,
-      };
-      dispatch(addMovie(payload));
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('title', title);
+      formData.append('publishing_year', year);
+
+      dispatch(addMovie(formData));
     } else {
       setErrors(validationErrors);
     }
@@ -56,7 +56,7 @@ const AddMovie = () => {
       <div className="movie-form-container">
         <div className="drag-drop-area">
           {imagePreview ? (
-            <img src={imagePreview} className="uploaded-image" alt="no uploaded image" />
+            <img src={imagePreview} className="uploaded-image" alt="Uploaded preview" />
           ) : (
             <FileUpload onDrop={handleFileDrop} isDragDropText={true} width="476px" height="504px" />
           )}
@@ -74,11 +74,11 @@ const AddMovie = () => {
           />
 
           <div className="form-buttons">
-            <Button isOutline className={'full-width'}>
+            <Button isOutline className={'full-width'} onClick={() => navigate(routes.private[0].path)}>
               Cancel
             </Button>
-            <Button className={'full-width'} onClick={handleSubmit}>
-              Update
+            <Button className={'full-width'} onClick={handleSubmit} disabled={loading}>
+              {loading ? 'Saving...' : 'Add Movie'}
             </Button>
           </div>
         </div>

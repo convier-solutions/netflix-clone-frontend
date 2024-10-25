@@ -1,5 +1,6 @@
 .movie-card {
   background-color: #092c39;
+  width: 283px;
   border-radius: 8px;
   padding: 0.5rem 0.5rem 1rem 0.5rem;
   text-align: center;
@@ -14,9 +15,9 @@
 
 .movie-image {
   width: 100%;
-  max-height: 400px;
-  height: auto;
+  height: 400px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .movie-info {

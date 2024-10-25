@@ -1,24 +1,25 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import API from '../../services/API'; 
+import { ADD_MOVIE, EDIT_MOVIE, LIST_MOVIE } from '../../services/services';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async () => {
-  const response = await API.get('/movies'); 
+  const response = await API.get(LIST_MOVIE); 
   return response.data;
 });
 
 export const addMovie = createAsyncThunk('movies/addMovie', async (movieData) => {
-  const response = await API.post('/movies', movieData); 
+  const response = await API.post(ADD_MOVIE, movieData); 
   return response.data;
 });
 
 export const editMovie = createAsyncThunk('movies/editMovie', async ({ id, movieData }) => {
-  const response = await API.put(`/movies/${id}`, movieData); 
+  const response = await API.put(`${EDIT_MOVIE}${id}`, movieData); 
   return response.data;
 });
 
 const initialState = {
   listMovies: {
-    data: [],
+    data: null,
     loading: false,
     error: null,
   },
@@ -40,7 +41,7 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {
     resetMoviesState: (state) => {
-      state.listMovies.data = [];
+      state.listMovies.data = null;
       state.listMovies.error = null;
       state.addMovie.data = null;
       state.addMovie.error = null;
@@ -84,10 +85,7 @@ const moviesSlice = createSlice({
       .addCase(editMovie.fulfilled, (state, action) => {
         state.editMovie.loading = false;
         state.editMovie.data = action.payload; 
-        const index = state.listMovies.data.findIndex(movie => movie.id === action.payload.id);
-        if (index !== -1) {
-          state.listMovies.data[index] = action.payload; 
-        }
+       
       })
       .addCase(editMovie.rejected, (state, action) => {
         state.editMovie.loading = false;

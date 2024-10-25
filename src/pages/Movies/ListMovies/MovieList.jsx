@@ -4,32 +4,26 @@ import './MovieList.css';
 import Header from '../../../components/Header/Header';
 import MovieCard from '../../../components/MovieCard/MovieCard';
 import Pagination from '../../../components/Pagination/Pagination';
-import { fetchMovies, selectMovies } from '../../../redux/slices/moviesSlice/movieSlice';
+import { fetchMovies } from '../../../redux/slices/moviesSlice/movieSlice';
 import EmptyList from '../../../components/common/EmptyList/EmptyList';
-// import { fetchMovies, selectMovies, resetMoviesState } from '../../../redux/slices/moviesSlice';
 
 const MovieList = () => {
   const dispatch = useDispatch();
-  const { listMovies, loading, error } = useSelector((state) => state.movie.listMovies);
+  const { data, loading, error } = useSelector((state) => state?.movie?.listMovies);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
   useEffect(() => {
-    // Fetch movies when the component mounts
-    // dispatch(fetchMovies());
-
-    // Reset movies state on component unmount
-    return () => {
-      // dispatch(resetMoviesState());
-    };
+    dispatch(fetchMovies());
   }, [dispatch]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
-  const paginatedData = listMovies?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const totalItems = data?.data?.length || 0;
+  const paginatedData = totalItems > 0 ? data?.data?.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) : [];
 
   if (loading) {
     return <div>Loading...</div>;
@@ -41,15 +35,15 @@ const MovieList = () => {
 
   return (
     <div className="movie-list-container">
-      {listMovies?.length > 0 ? (
+      {totalItems > 0 ? (
         <>
           <Header />
           <div className="movies-grid">
-            {paginatedData?.map((movie) => (
+            {paginatedData.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
-          {listMovies?.length > 0 && <Pagination totalItems={listMovies?.length ?? 0} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />}
+          <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
         </>
       ) : (
         <EmptyList />
