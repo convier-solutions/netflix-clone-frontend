@@ -1,0 +1,60 @@
+.drag-file-upload {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  padding: 1.5rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.drag-file-upload-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.drag-upload-icon {
+  font-size: 1.5rem;
+  margin-right: 0.6rem;
+}
+
+.drag-upload-text {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.drag-upload-info {
+  font-family: var(--default-font-family-Dm-Sans);
+  font-size: var(--default-font-size-16);
+  font-weight: 400;
+  line-height: 20.02px;
+  letter-spacing: 0.17000000178813934px;
+  text-align: center;
+  color: var(--color-gray-600);
+}
+
+.click-to-upload-text {
+  color: var(--color-dark-green);
+  text-decoration: underline;
+}
+.drag-file-upload:hover {
+  background-color: var(--color-white);
+}
+
+.drag-drag-active {
+  background-color: var(--color-white);
+  border-color: var(--color-dark-green);
+}
+
+.uploaded-image {
+  height: 100%;
+  width: 100%;
+}

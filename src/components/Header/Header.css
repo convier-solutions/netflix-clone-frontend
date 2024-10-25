@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  color: #ffffff;
+}
+
+.header-title {
+  margin-left: 10px;
+  font-size: 24px;
+  font-family: Montserrat, sans-serif;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.3rem;
+}

@@ -1,0 +1,53 @@
+.add-movies-container {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.add-movies-container h2 {
+  font-family: Montserrat;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  text-align: left;
+  color: #ffffff;
+  margin-bottom: 6rem;
+}
+
+.movie-form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 4rem;
+}
+
+.drag-drop-area {
+  max-height: 504px;
+  max-width: 476px;
+  border: 2px dashed #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.form-area {
+  max-width: 365px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-area h2 {
+  margin-bottom: 20px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+}
