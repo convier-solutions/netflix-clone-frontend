@@ -45,7 +45,6 @@ const authSlice = createSlice({
       })
       .addCase(logInService.fulfilled, (state, action) => {
         state.user.loading = false;
-        console.log("ABC",action.payload )
         state.user.data = action.payload; 
         if (action.payload.status === "Success") {
           state.isAuthenticated = true;
@@ -55,9 +54,9 @@ const authSlice = createSlice({
         }
       })
       .addCase(logInService.rejected, (state, action) => {
-        state.loading = false;
+        state.user.loading = false;
         state.error = action.error.message || "Login request failed";
-        console.log("Login request failed",action.payload )
+        console.log("Login request failed", action.payload )
 
       });
   },

@@ -21,8 +21,6 @@ const Login = () => {
     e.preventDefault();
     const validationErrors = validateLogin(email, password);
 
-    console.log('submit');
-
     if (Object.keys(validationErrors).length === 0) {
       setErrors({});
       dispatch(logInService({ email, password }));
@@ -33,7 +31,6 @@ const Login = () => {
 
   useEffect(() => {
     if (data?.status === 'Success') {
-      console.log('data', routes.private[0].path);
       navigate(routes.private[0].path);
       dispatch(resetAuthState());
     } else if (data?.status === 'Error') {
